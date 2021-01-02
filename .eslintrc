@@ -1,6 +1,11 @@
 {
-    "extends": "airbnb-base",
+    "extends": ["airbnb-typescript/base"],
+    "parserOptions": {
+        "project": "./tsconfig.json"
+    },
     "rules": {
-        "linebreak-style":["error", "windows"]
+        "linebreak-style":["error", "windows"],
+        "max-classes-per-file":0,
+        "@typescript-eslint/indent":[0, "tab"] 
     }
 }
