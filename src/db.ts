@@ -74,5 +74,14 @@ class TeacherCrudOperations {
         if (deletedReacord.length < 1) throw new Error(`Recotd with id ${id} doesnt exist`);
         return deletedReacord[0];
     }
+
+    async getTargetMathTeachers() {
+        const queryText: string = `SELECT public."Teacher".id as id, fullname, birthdate, carier_start, gender from public."Lesson"
+        INNER JOIN public."Teacher" ON teacher_id = public."Teacher".id
+        INNER JOIN public."Classroom" ON classroom_id=public."Classroom".id
+        WHERE subject='math' and class_number=100 and DATE_PART('year', NOW()) - DATE_PART('year', carier_start) > 10;`;
+        const teachers = (await this.pool.query(queryText) as QueryResult<ITeacher>).rows;
+        return teachers;
+    }
 }
 export default TeacherCrudOperations;
