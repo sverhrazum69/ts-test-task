@@ -43,4 +43,13 @@ app.delete('/delete/:id', async (req, res) => {
     }
 });
 
+app.get('/', async (req, res) => {
+    try {
+        const retrievedTeachers = await teacherCrudOperations.getTargetMathTeachers();
+        return res.status(200).json(retrievedTeachers);
+    } catch (error) {
+        return res.status(400).json({ message: error.message });
+    }
+});
+
 app.listen(process.env.SERVER_PORT || 5000);
