@@ -6,6 +6,8 @@
     "rules": {
         "linebreak-style":["error", "windows"],
         "max-classes-per-file":0,
-        "@typescript-eslint/indent":[0, "tab"] 
+        "@typescript-eslint/indent":[0, "tab"],
+        "max-len":["error", { "code": 150 }],
+        "no-restricted-syntax":"off"
     }
 }
