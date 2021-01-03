@@ -50,28 +50,3 @@ export enum Subject {
     PHYSICS = 'physics',
     CHEMISTRY = 'chemistry',
 }
-
-export class Lesson implements ILesson {
-    constructor(
-        public id: number,
-        public subject: Subject,
-        public start_time: StartTime,
-        public day: Day,
-        public teacher_id: number,
-        public classroom_id: number,
-    ) { }
-}
-
-export class Teacher implements ITeacher {
-    constructor(
-        public id: number,
-        public fullname: string,
-        public birthdate: Date,
-        public carier_start: Date,
-        public gender: Sex,
-    ) { }
-}
-
-export class Classroom implements IClassroom {
-    constructor(public id: number, public class_number: number) { }
-}
