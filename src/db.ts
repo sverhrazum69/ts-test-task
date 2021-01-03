@@ -78,14 +78,9 @@ class TeacherCrudOperations {
     async getTargetMathTeachers() {
         const queryText: string = `SELECT public."Teacher".id as id, fullname, birthdate, carier_start, gender from public."Lesson"
         INNER JOIN public."Teacher" ON teacher_id = public."Teacher".id
-<<<<<<< HEAD
         INNER JOIN public."Classroom" ON classroom_id=public."Classroom".id 
         WHERE subject='math' and class_number=100 and DATE_PART('year', NOW()) - DATE_PART('year', carier_start) > 10 and day='thursday'
             and TO_TIMESTAMP(start_time::text, 'HH24-MI') between  TO_TIMESTAMP('08-30', 'HH24-MI') and TO_TIMESTAMP('14-30', 'HH24-MI');`;
-=======
-        INNER JOIN public."Classroom" ON classroom_id=public."Classroom".id
-        WHERE subject='math' and class_number=100 and DATE_PART('year', NOW()) - DATE_PART('year', carier_start) > 10;`;
->>>>>>> e4de0418172ba9c9751fa0fa79cf62521b553353
         const teachers = (await this.pool.query(queryText) as QueryResult<ITeacher>).rows;
         return teachers;
     }
