@@ -76,7 +76,7 @@ class TeacherCrudOperations {
     }
 
     async getTargetMathTeachers() {
-        const queryText: string = `SELECT public."Teacher".id as id, fullname, birthdate, carier_start, gender from public."Lesson"
+        const queryText: string = `SELECT distinct(public."Teacher".id) as id, fullname, birthdate, carier_start, gender from public."Lesson"
         INNER JOIN public."Teacher" ON teacher_id = public."Teacher".id
         INNER JOIN public."Classroom" ON classroom_id=public."Classroom".id 
         WHERE subject='math' and class_number=100 and DATE_PART('year', NOW()) - DATE_PART('year', carier_start) > 10 and day='thursday'
